@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} home_contact    
+    {% endblock title %}
+    {% block Contactactive  %} active {% endblock Contactactive  %} 
+
+{% block body %} 
+<div class="container input-sm">
+ <form action="/save_contact" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control " id="name" aria-describedby="text" name="name" placeholder="Enter name ">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email Address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone no.">
+    </div>
+    <div class="form-group">
+      <label for="massage">Massage</label>
+      <textarea name="massage" class="form-control" id="massage" name="massage" placeholder="Enter your Massage." cols="30" rows="5"></textarea>
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a name="" id="" class="btn btn-primary" href="/list-contact" role="button">Contact list</a>
+    
+    
+  </form>
+</div>
+    {% endblock body %}
+

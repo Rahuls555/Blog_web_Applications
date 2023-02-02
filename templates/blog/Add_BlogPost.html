@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} blog_post  
+    {% endblock title %}
+    {% block blogactive  %} active {% endblock blogactive  %} 
+
+{% block body %} 
+
+
+
+  <div class="container my-3  input-sm">
+
+    <form action="/blog/crt_post" method="post">
+    {% csrf_token %}
+
+    <h2 class="blog-post-title">Add Blog :</h2>
+    <div class="form-group">
+      <label for="title"><b>Title :</b></label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="" aria-describedby="helpId">
+    </div>
+    <div class="form-group">
+      <label for="content"><b>Content :</b> </label>
+      <textarea name="content" id="content" cols="155" rows="4"></textarea>
+      
+    </div>
+    <div class="form-group">
+      <label for="author"><b>Author :</b></label>
+      <input type="text" name="author" id="author" class="form-control" value="{{user.username}}" placeholder="" aria-describedby="helpId">
+    </div>
+    <div class="form-group">
+      <label for="slug"><b>Catagoty :</b></label>
+      <input type="text" name="slug" id="slug" class="form-control" placeholder="" aria-describedby="helpId">
+    </div>
+    <div class="form-group">
+      <label for="timestamp"><b>Date-Time :</b></label>
+      <input type="datetime-local" name="timestamp" id="timestamp" class="form-control" placeholder="" aria-describedby="helpId">
+    </div>
+    <button type="submit" class="btn btn-primary">Save Post</button>
+
+    <!-- ckeditor cdn -->
+    <script>
+      ClassicEditor
+              .create( document.querySelector( '#content' ) )
+              .then( content => {
+                      console.log( content );
+              } )
+              .catch( error => {
+                      console.error( error );
+              } );
+    </script>
+    </form>
+  </div>
+
+
+    {% endblock body %}
+

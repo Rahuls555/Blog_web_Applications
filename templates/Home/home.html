@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} home_blog   
+    {% endblock title %}
+    {% block Homeactive  %} active {% endblock Homeactive  %} 
+
+{% block body %} 
+ <div class="container ">
+  <div class="jumbotron">
+    <h1 class="display-7 ">WelCome to iCoder!</h1>
+    <p class="lead">Exploring the future of education with experts around the world</p>
+    <hr class="my-4">
+    <p>Blogs & Websites
+      For Education
+      By educators, for educators. We are the oldest and most trusted web publishing platform for teachers and students.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-sm" href="/blog" role="button">Go to Blog</a>
+      <a class="btn btn-primary btn-sm" href="/blog" role="button">Add Blog</a>
+    </p>
+  </div>  
+ </div>    
+ {% for post in AllPost %}
+    <div class="container my-3 ">
+     <div class= "row no-gutter border round overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex-column position-static">
+              <h3 class="mb-0">{{post.title}}</h3>
+              <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
+               <div class="mb-1 text-muted">{{post.Datetime}}</div>
+               <p class="card-text mb-auto">{{post.content|safe | truncatechars:400}}</p>
+               <div my-2>
+               <a href="/blog/{{post.id}}" role= "button" class="btn btn-primary">Continue reading</a>
+               </div>
+            </div>
+            <div class="col-auto d-none d-lg-block"></div>
+     </div>
+    </div>       
+  {% endfor %}
+
+{% endblock body %} 

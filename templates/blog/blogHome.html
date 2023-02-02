@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} home_blog   
+    {% endblock title %}
+    {% block blogactive  %} active {% endblock blogactive  %} 
+
+{% block body %} 
+
+
+
+<div class="container my-3">
+    <h2>Coding Articles by iCoder :</h2>
+    <div class="container my-3 text-right">
+
+      {% if user.is_authenticated %}
+     
+          <a name="" id="" class="btn btn-primary mr-2" href="/blog/Add_BlogPost" role="button">Add Blog -></a>
+
+      {% else %}
+        <button type="button" class="btn btn-primary mr-2"  data-toggle="modal" data-target="#loginModal">
+          Add Blog ->
+       </button>
+      {% endif %}
+
+    </div>
+  {% for post in AllPost %}
+    <div class="container my-3 ">
+     <div class= "row no-gutter border round overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex-column position-static">
+               <strong class="d-inline-block mb-2 "> <h3>{{post.title}}</h3></strong>
+               <h6 class="mb-0 ">Article by  : <a href="/about">{{post.author}}</a></h6>
+               <div class="mb-1 text-muted">{{post.timestamp}}</div>
+               <p class="card-text mb-auto">{{post.content|safe | truncatechars:400 }}</p>
+               <div my-2>
+               
+
+
+               <a href="/blog/{{post.id}}" role= "button" class="btn btn-primary">Continue reading</a>
+               </div>
+            </div>
+            <div class="col-auto d-none d-lg-block"></div>
+     </div>
+    </div>       
+    
+  {% endfor %}
+ </div>
+{% endblock body %}

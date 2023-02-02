@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} blog_post  
+    {% endblock title %}
+    {% block blogactive  %} active {% endblock blogactive  %} 
+
+{% block body %} 
+
+    <div class="container my-3 ">
+
+      <h2 class="blog-post-title">{{post.title}}</h2>
+     <h6> <p  class="blog-post-meta">Article by  : <a href="/about">{{post.author}}</a>{{post.timestamp}}  </p></h6>
+      <p>{{post.content |safe}}</p>
+
+      {% if user.username == post.author %}
+
+      <a class="btn btn-primary btn-sm  text-center" href="/blog/Edit_Post/{{post.id}}" role="button">Edit Your Blog :</a>
+      <a class="btn btn-primary btn-sm  text-center" href="/blog/Delete_Post/{{post.id}}" role="button">Delete Your Blog :</a>
+    
+      {% endif %}
+
+   
+
+    {% endblock body %}
+
+    

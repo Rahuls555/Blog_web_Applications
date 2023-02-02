@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} home_contact    
+    {% endblock title %}
+    {% block Contactactive  %} active {% endblock Contactactive  %} 
+
+{% block body %} 
+      
+    
+    <div class="container">
+      <h3>List of contacts :</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Massage</th>
+               
+                </tr>
+              </thead>
+              <tbody>
+                
+                {% for s in lst  %}
+                <tr>
+                        <td>{{s.id}}</td>
+                        <td>{{s.name}}</td>
+                        <td>{{s.email}}</td>
+                        <td>{{s.phone}}</td>
+                        <td>{{s.massage}}</td>
+                        <td>
+                            <a href="/remove-contact/{{s.id}}" class="btn btn-danger btn-sm">Remove</a>
+                            <a href="/edit-contact/{{s.id}}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                    
+    </div>
+    {% endblock body %}
